@@ -21,3 +21,12 @@ def print_of_theives(request, num):
     print(type(num))
     num = int(num) *10
     return HttpResponse(f"<h2>total number = {num} </h2>")
+
+
+
+
+
+
+
+
+
