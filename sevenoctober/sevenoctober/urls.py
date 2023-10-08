@@ -24,5 +24,7 @@ urlpatterns = [
     # path("cong/<user>", congratulation,name="congrate.user"),
     # path('total/<int:num>', print_of_theives, name='print_of_theives')
     ###
-    path('theives/', include('theives.urls' ))
+    path('theives/', include('theives.urls' )),
+    path('tracks/', include('tracks.urls'))
+
 ]
