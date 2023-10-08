@@ -15,7 +15,7 @@ def html(request):
 
 
 def index(request):
-    return render(request, 'theives/index.html')
+    return render(request, 'theives/index.html', context={"theives":theives})
 
 def congratulation(request,user ):
     return  HttpResponse(f"<h1> Congratulations  {user} </h1>")
