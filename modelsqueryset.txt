@@ -1,0 +1,40 @@
+
+
+1- to get all object
+select * from students;
+
+use model
+
+Student.objects.all()
+
+
+2- to create new object
+
+s= Student()
+s.name='ahmed'
+s.age= 10
+s.save()
+
+
+3-get specific objects
+select * from students where id=1;
+Student.objects.filter(id=1)
+select * from students where name='maged';
+Student.objects.filter(name='maged')
+
+# get students id > 2
+select * from students where id>2;
+Student.objects.filter(id__gt=2)
+
+select * from students where name like 'm%';
+Student.objects.filter(name__startswith='m')
+
+check below
+https://docs.djangoproject.com/en/4.2/ref/models/querysets/#filter
+
+and filters
+https://docs.djangoproject.com/en/4.2/ref/models/querysets/#field-lookups
+
+### get funciton --> return one object
+Student.object.get(id=1) # note that get only returns with object
+

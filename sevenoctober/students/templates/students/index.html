@@ -5,5 +5,20 @@
 {% block title %}Students Index {% endblock %}
 {% block main %}
     <h1> Welcome to students index </h1>
+    <table class="table">
+            <tr> <th> ID</th>  <th> Name</th> <th>Image </th>
+                <th> Show </th> <th> Delete</th>
+            </tr>
+
+        {% for student in students %}
+            <tr>
+                <td>{{student.id }}</td>
+                 <td>{{student.name }}</td>
+                 <td><img src="{% static  'students/images/'|add:student.image %}" width="100" height="100" > </td>
+                <td><a href="{% url 'students.show' student.id %}" class="btn btn-info">  Show </a> </td>
+                 <td><a href="{% url 'students.delete' student.id %}" class="btn btn-danger">  Delete </a> </td>
+            </tr>
+        {% endfor %}
+    </table>
 
 {% endblock %}
