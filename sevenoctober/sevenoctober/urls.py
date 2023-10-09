@@ -25,6 +25,7 @@ urlpatterns = [
     # path('total/<int:num>', print_of_theives, name='print_of_theives')
     ###
     path('theives/', include('theives.urls' )),
-    path('tracks/', include('tracks.urls'))
+    path('tracks/', include('tracks.urls')),
+    path('students/', include('students.urls'))
 
 ]
