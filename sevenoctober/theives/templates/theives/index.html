@@ -1,37 +1,39 @@
+{% extends 'theives/layouts/base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Theives Index </title>
-    <link rel="stylesheet" href="{% static 'theives/css/style.css' %}">
-    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css'%}">
-</head>
-<body>
-    <div class="container">
-    <h1 style="color: red;"> This is the landing page </h1>
-    you must restart the server after adding static folder to the application
-    {{theives}}
-    <table class="table">
-            <tr> <th> ID</th> <th> Name </th> <th> Image </th>
-            <th> Show</th>
-            </tr>
+{% block title %} Theives Index  {% endblock %}
+{% block body %}
+<h1 style="color: red">
+    This Theives landing page
+</h1>
+{% endblock %}
 
-    {% for theif in theives %}
+
+{% block content %}
+    <h1> this the content block </h1>
+{% endblock %}
+
+
+{% block  test %}
+    <h4> Mariammmmmmmmmmmmmmmmmmmmmmm </h4>
+{% endblock %}
+
+{% block main %}
+
+
+    <h1> All theives  </h1>
+    <table class="table">
+        <tr><th> ID</th>  <th> Name</th> <th> Image </th> <th>Show</th></tr>
+
+         {% for theif in theives %}
         <tr>
             <td> {{theif.id}}</td>
               <td> {{theif.name}}</td>
-<!--              <td> <img src="{% static 'theives/images/pic2.png' %}" width="200" height="200"> </td>-->
              <td> <img src="{% static 'theives/images/'|add:theif.image %}" width="200" height="200"> </td>
-<!--            <td>  <a href="/theives/profile/{{theif.id}}" class="btn btn-primary"> Show </a></td>-->
             <td>  <a href="{% url 'theif.profile' theif.id %}" class="btn btn-primary"> Show </a></td>-->
         </tr>
     {% endfor %}
-         </table>
-</div>
-    <script src="{% static 'bootstrap/js/bootstrap.js'%}">
 
-    </script>
-</body>
+    </table>
+{% endblock %}
 
-</html>
+
