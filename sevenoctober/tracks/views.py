@@ -39,7 +39,9 @@ def createViaForm(request):
         if form.is_valid():
             name = request.POST['name']
             description = request.POST['description']
-            image = request.FILES['image']
+            image = None
+            if "image" in request.FILES :
+                image = request.FILES['image']
             track = Track.objects.create(name=name, image=image, description=description)
             url = reverse('tracks.index')  # /tracks/
             return redirect(url)

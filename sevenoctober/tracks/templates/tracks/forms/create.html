@@ -4,6 +4,7 @@
 
 {% block title %}Add new Track {% endblock %}
 {% block main %}
+
     <h1> Add new Track  </h1>
     <form method="post"  enctype="multipart/form-data">
         {% csrf_token %}
@@ -11,4 +12,7 @@
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 
+<script src="{% static  'tracks/js/script.js' %}">
+
+</script>
 {% endblock %}
