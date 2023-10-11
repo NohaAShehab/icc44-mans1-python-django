@@ -1,6 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from tracks.models import Track
 from django.http import HttpResponse
+from  tracks.forms import  TrackForm
 # Create your views here.
 
 
@@ -19,7 +20,29 @@ def create(request):
         description = request.POST['description']
         image = request.FILES['image']
         track = Track.objects.create(name=name, image=image, description=description)
-        return redirect(Track.get_index_url())
+        url = reverse('tracks.index') # /tracks/
+        return redirect(url)
+        # return redirect('/tracks/')
 
         # return HttpResponse("data received")
     return  render(request, 'tracks/create.html')
+
+
+
+
+def createViaForm(request):
+    # django --> create html for
+    form = TrackForm()
+
+    if request.POST:
+        form = TrackForm(request.POST, request.FILES)
+        if form.is_valid():
+            name = request.POST['name']
+            description = request.POST['description']
+            image = request.FILES['image']
+            track = Track.objects.create(name=name, image=image, description=description)
+            url = reverse('tracks.index')  # /tracks/
+            return redirect(url)
+
+    return  render( request, 'tracks/forms/create.html',
+                    context={"form": form})
