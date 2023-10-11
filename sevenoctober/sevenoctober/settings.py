@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     # 'theives'
     'tracks.apps.TracksConfig',
     'theives.apps.TheivesConfig',
-    'students.apps.StudentsConfig'
+    'students.apps.StudentsConfig',
+    'django_cleanup.apps.CleanupConfig',
 ]
 
 MIDDLEWARE = [
