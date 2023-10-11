@@ -5,7 +5,7 @@
 {% block title %}Students Index {% endblock %}
 {% block main %}
     <h1> Welcome to student Profile  </h1>
-    <div class="col-6 mx-auto">
+    <div class="flex-row d-flex justify-content-between">
     <div class="card" style="width: 18rem;">
       <img src="{% static 'students/images/'|add:student.image %}" class="card-img-top" alt="...">
       <div class="card-body">
@@ -17,5 +17,14 @@
         <a href="{% url 'students.index'%}" class="btn btn-primary">Back to all students</a>
       </div>
 </div>
+        <div >
+            <h1> Students in this track </h1>
+<!--            {{student.track.students.all}}-->
+            {% for std in student.track.students.all %}
+            {% if std.id != student.id %}
+                <li> <a href="{{std.get_show_url}}">{{std.name}}</a> </li>
+            {% endif %}
+            {% endfor %}
+        </div>
         </div>
 {% endblock %}
