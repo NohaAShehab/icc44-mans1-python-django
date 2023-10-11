@@ -3,3 +3,10 @@
 validate forms
 
 django forms
+
+relation between models
+
+each student studies in only one track
+
+=> one to many relationship
+(fk===> many )

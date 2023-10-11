@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect,reverse, get_object_or_404
 from django.http import HttpResponse
 
 from students.models import Student
+from tracks.models import Track
+from students.forms import StudentForm
 # Create your views here.
 
 
@@ -52,3 +54,23 @@ def create(request):
 
 
     return  render(request, 'students/create.html')
+
+
+def createViaForm(request):
+    form = StudentForm()
+    if request.method == 'POST':
+        print(request.POST)
+        form  = StudentForm(request.POST)
+        track = None
+        if request.POST['track']:
+            track = Track.objects.get(id=request.POST['track'])
+        if form.is_valid():
+            student = Student.objects.create(name=request.POST['name'], age=request.POST['age'],
+                                             image=request.POST['image'], email=request.POST['email'],
+                                             track = track)
+            return redirect(student.get_show_url())
+
+        # return HttpResponse("data received")
+
+    return  render(request, 'students/forms/create.html',
+                   context={"form":form})

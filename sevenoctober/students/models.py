@@ -1,7 +1,7 @@
 from django.db import models
 from django.shortcuts import reverse
 # Create your models here.
-
+from tracks.models import Track
 
 class Student(models.Model):
     # define properties of student model object
@@ -12,6 +12,8 @@ class Student(models.Model):
     image = models.CharField(max_length=200, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    track = models.ForeignKey(Track, null=True, blank=True, on_delete=models.CASCADE)
+    ## student.track ===> Track object
 
 
     def __str__(self):
