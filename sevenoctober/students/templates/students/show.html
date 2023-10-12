@@ -7,7 +7,7 @@
     <h1> Welcome to student Profile  </h1>
     <div class="flex-row d-flex justify-content-between">
     <div class="card" style="width: 18rem;">
-      <img src="{% static 'students/images/'|add:student.image %}" class="card-img-top" alt="...">
+      <img src="{{student.get_image_url}}" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">{{student.name}}</h5>
         <p class="card-text">Age: {{student.age}}</p>

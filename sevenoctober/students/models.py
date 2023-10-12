@@ -9,7 +9,7 @@ class Student(models.Model):
     name = models.CharField(max_length=100)
     age = models.IntegerField(default=10, null=True)
     email = models.EmailField(null=True, unique=True)
-    image = models.CharField(max_length=200, null=True)
+    image = models.ImageField(upload_to='students/images/', null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     ######## backword relation
@@ -28,5 +28,19 @@ class Student(models.Model):
 
     def get_delete_url(self):
         return  reverse('students.delete', args=[self.id])
+
+
+    def get_image_url(self):
+        return f"/media/{self.image}"
+
+
+    def get_edit_url(self):
+        return  reverse('students.edit', args=[self.id])
+
+
+    @classmethod
+    def get_sepcific_object(cls, id):
+        return  cls.objects.get(id=id)
+
 
 
