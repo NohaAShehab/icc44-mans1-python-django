@@ -6,6 +6,9 @@ from tracks.models import Track
 from students.forms import StudentForm, StudentModelForm
 from django.views import View
 
+# from django.contrib.auth.models import  User
+
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
@@ -75,8 +78,12 @@ def create(request):
 #     return  render(request, 'students/forms/create.html',
 #                    context={"form":form})
 
-
+# information about logged in user in request object
+@login_required()
 def createViaForm(request):
+    print(request.user.id)
+    if request.user:
+        print(request.user.email)
     form = StudentModelForm()
     if request.method == 'POST':
         form = StudentModelForm(request.POST, request.FILES)
@@ -127,6 +134,7 @@ class CreateStudentClassView(View):
 
 class EditStudentClassView(View):
     def get(self,request, id):
+        print(user.id)
         student = Student.get_sepcific_object(id)
         form = StudentModelForm(instance=student)
         return render(request, 'students/forms/edit.html',

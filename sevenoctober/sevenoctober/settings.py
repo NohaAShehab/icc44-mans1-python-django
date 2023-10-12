@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'theives.apps.TheivesConfig',
     'students.apps.StudentsConfig',
     'django_cleanup.apps.CleanupConfig',
-    'posts.apps.PostsConfig'
+    'posts.apps.PostsConfig',
+    'accounts.apps.AccountsConfig',
 ]
 
 MIDDLEWARE = [
@@ -60,7 +61,7 @@ ROOT_URLCONF = 'sevenoctober.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR/'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
