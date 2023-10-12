@@ -22,13 +22,10 @@ from django.urls import path, include
 from theives.views import hello, html, congratulation, print_of_theives
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('helloworld',hello, name='theives.helloworld'),
-    # path('celebrate', html , name='celebrate'),
-    # path("cong/<user>", congratulation,name="congrate.user"),
-    # path('total/<int:num>', print_of_theives, name='print_of_theives')
-    ###
+
     path('theives/', include('theives.urls' )),
     path('tracks/', include('tracks.urls')),
-    path('students/', include('students.urls'))
+    path('students/', include('students.urls')),
+    path('posts/', include('posts.urls'))
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

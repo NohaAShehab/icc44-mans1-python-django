@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from students.models import Student
 from tracks.models import Track
 from students.forms import StudentForm, StudentModelForm
-
+from django.views import View
 
 # Create your views here.
 
@@ -106,3 +106,39 @@ def editViaForm(request, id):
 
 
 
+
+class CreateStudentClassView(View):
+    def get(self,request, ):
+        form = StudentModelForm()
+        return render(request, 'students/forms/create.html',
+                      context={"form": form})
+
+
+    def post(self, request):
+        form = StudentModelForm(request.POST, request.FILES)
+        if form.is_valid():
+            student=form.save()
+            return redirect(student.get_show_url())
+
+        return render(request, 'students/forms/create.html',
+                          context={"form": form})
+
+
+
+class EditStudentClassView(View):
+    def get(self,request, id):
+        student = Student.get_sepcific_object(id)
+        form = StudentModelForm(instance=student)
+        return render(request, 'students/forms/edit.html',
+                      context={"form": form})
+
+
+    def post(self, request, id):
+        student = Student.get_sepcific_object(id)
+        form = StudentModelForm(request.POST, request.FILES, instance=student)
+        if form.is_valid():
+            student=form.save()
+            return redirect(student.get_show_url())
+
+        return render(request, 'students/forms/edit.html',
+                          context={"form": form})

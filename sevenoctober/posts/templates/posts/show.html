@@ -1,0 +1,22 @@
+{% extends 'theives/layouts/base.html' %}
+
+{% load static %}
+
+{% block title %}Post Details{% endblock %}
+{% block main %}
+    <h1> Welcome to Post Details  </h1>
+    <div class="flex-row d-flex justify-content-between">
+    <div class="card" style="width: 18rem;">
+      <img src="{{post.get_image_url}}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{post.title}}</h5>
+        <p class="card-text">Body: {{post.body}}</p>
+          <p class="card-text">Author: {{post.author}}</p>
+          <p class="card-text">Created_at: {{post.created_at}}</p>
+          <p class="card-text">Updated_at: {{post.updated_at}}</p>
+        <a href="{% url 'posts.list'%}" class="btn btn-primary">Back to all posts</a>
+      </div>
+</div>
+        
+        </div>
+{% endblock %}

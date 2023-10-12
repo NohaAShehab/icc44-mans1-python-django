@@ -1,0 +1,28 @@
+{% extends 'theives/layouts/base.html' %}
+
+{% load static %}
+
+{% block title %}Students Index {% endblock %}
+{% block main %}
+    <h1> Welcome to Posts index </h1>
+    <a href="{% url 'posts.create' %}" class="btn btn-dark">Add new Post </a>
+    <table class="table">
+            <tr> <th> ID</th>  <th> Title</th> <th>Image </th>
+                <th> Show </th> <th>Edit</th> <th> Delete</th>
+            </tr>
+        {{posts}}
+        {{object_list}}
+         {% for post in object_list %}
+            <tr>
+                <td>{{post.id }}</td>
+                 <td>{{post.title }}</td>
+                 <td><img src="{{post.get_image_url}}" width="100" height="100" > </td>
+                <td><a href="{{post.get_show_url}}" class="btn btn-info">  Show </a> </td>
+                <td><a href="{{post.get_edit_url}}" class="btn btn-warning">  Edit </a> </td>
+                 <td><a href="{{post.get_delete_url}}" class="btn btn-danger">  Delete </a> </td>
+            </tr>
+        {% endfor %}
+
+    </table>
+
+{% endblock %}

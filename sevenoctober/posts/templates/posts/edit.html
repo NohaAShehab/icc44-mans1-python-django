@@ -1,0 +1,18 @@
+{% extends 'theives/layouts/base.html' %}
+
+{% load static %}
+
+{% block title %}Edit Post {% endblock %}
+{% block main %}
+
+    <h1> Edit POSt </h1>
+    <form method="post"  enctype="multipart/form-data">
+        {% csrf_token %}
+  {{form}}
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<script src="{% static  'tracks/js/script.js' %}">
+
+</script>
+{% endblock %}
